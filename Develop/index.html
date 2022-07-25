@@ -1,88 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Work Day Scheduler</title>
-  </head>
 
-  <body>
-    <header class="jumbotron">
-      <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
-      <!-- weekday, month day -->
-      <p id="currentDay" class="lead"></p>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <!-- added for an icon -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Work Day Scheduler</title>
+</head>
 
-    <div class="container">
-      <!-- Timeblocks go here -->
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">9AM</p>
-        </div>
+<body>
+  <header class="jumbotron">
+    <h1 class="display-3">Work Day Scheduler</h1>
+    <p class="lead">A simple calendar app for scheduling your work day</p>
+    <!-- weekday, month day -->
+    <p id="currentDay" class="lead"></p>
+  </header>
+
+  <div class="container-fluid">
+    <!-- Timeblocks go here -->
+    <div class="row row-custom no-gutters time-block">
+      <!-- row 1 -->
+      <div class="col-3 col-sm-2 col-md-2 col-lg-2">
+        <p class="hour p-3">9AM</p>
       </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">10AM</p>
-        </div>
+      <div class="col-6 col-sm-8 col-md-6 col-lg-6">
+        <textarea class="past" name="event" id="event9" cols="30" rows="10">Event</textarea>
       </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">11AM</p>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">12PM</p>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">1PM</p>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">2PM</p>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">3PM</p>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">4PM</p>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-          <p class="bg-danger text-light text-center p-3">5PM</p>
-        </div>
+      <div class="col-3 col-sm-2 col-md-2 col-lg-2 d-flex d-flex-custom saveBtn">
+        <i class="material-symbols-outlined">
+          save_as
+        </i>
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!-- replacement of moment.js -->
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    <script src="./script.js"></script>
-  </body>
+    <!-- row 2 from different row box -->
+    <div class="row d-flex justify-content-center no-gutters border-top-0">
+      <div class="col-3 col-sm-2 col-md-2 col-lg-2">
+        <p class="bg-danger text-light text-center p-3">10AM</p>
+      </div>
+      <div class="col-6 col-sm-8 col-md-6 col-lg-6">
+        <p class="bg-danger text-light text-center p-3">Event</p>
+      </div>
+      <div class="col-3 col-sm-2 col-md-2 col-lg-2">
+        <p class="bg-danger text-light text-center p-3">Save</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- replacement of moment.js -->
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
 </html>
