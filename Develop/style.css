@@ -69,6 +69,7 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  border-bottom: 1px solid white;
 }
 
 .saveBtn i:hover {
@@ -84,12 +85,8 @@ div p {
   padding-bottom: 0;
 }
 
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+.col-8 {
+  border-bottom: 1px solid white;
 }
 
 .col-2 {
@@ -115,3 +112,5 @@ div p {
 .red {
   color: red;
 }
+
+/* organize styling to flow better */
