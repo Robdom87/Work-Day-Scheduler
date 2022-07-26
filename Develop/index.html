@@ -12,6 +12,7 @@
   <!-- added for an icon -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="style.css" />
   <title>Work Day Scheduler</title>
 </head>
@@ -19,41 +20,151 @@
 <body>
   <header class="jumbotron">
     <h1 class="display-3">Work Day Scheduler</h1>
-    <p class="lead">A simple calendar app for scheduling your work day</p>
+    <p class="lead description">A simple calendar app for scheduling your work day</p>
     <!-- weekday, month day -->
-    <p id="currentDay" class="lead"></p>
+    <p id="currentDay" class="lead time-block"></p>
   </header>
+  <section class="saveMessage">Appointment added to&nbsp;<span class="red">localStorage</span><span class="material-symbols-outlined"> check</span></section>
 
   <div class="container-fluid">
     <!-- Timeblocks go here -->
-    <div class="row row-custom no-gutters time-block">
-      <!-- row 1 -->
-      <div class="col-3 col-sm-2 col-md-2 col-lg-2">
-        <p class="hour p-3">9AM</p>
+     <!-- 9 AM -->
+    <div class="row no-gutters row-custom">
+      <div class="col-2">
+        <p class="hour">9AM</p>
       </div>
-      <div class="col-6 col-sm-8 col-md-6 col-lg-6">
-        <textarea class="past" name="event" id="event9" cols="30" rows="10">Event</textarea>
+      <div class="col-8">
+        <textarea class="" name="event" id="event9" cols="30" rows="2">Event</textarea>
       </div>
-      <div class="col-3 col-sm-2 col-md-2 col-lg-2 d-flex d-flex-custom saveBtn">
+      <div class="col-2 saveBtn">
         <i class="material-symbols-outlined">
           save_as
         </i>
       </div>
     </div>
 
-    <!-- row 2 from different row box -->
-    <div class="row d-flex justify-content-center no-gutters border-top-0">
-      <div class="col-3 col-sm-2 col-md-2 col-lg-2">
-        <p class="bg-danger text-light text-center p-3">10AM</p>
+      <!-- 10 AM -->
+      <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">10AM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event10" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
       </div>
-      <div class="col-6 col-sm-8 col-md-6 col-lg-6">
-        <p class="bg-danger text-light text-center p-3">Event</p>
+
+       <!-- 11 AM -->
+       <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">11AM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event11" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
       </div>
-      <div class="col-3 col-sm-2 col-md-2 col-lg-2">
-        <p class="bg-danger text-light text-center p-3">Save</p>
+
+       <!-- 12 PM -->
+       <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">12PM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event12" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
       </div>
+
+       <!-- 1 PM -->
+       <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">1PM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event1" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
+      </div>
+
+       <!-- 2 PM -->
+       <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">2PM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event2" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
+      </div>
+
+       <!-- 3 PM -->
+       <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">3PM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event3" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
+      </div>
+
+       <!-- 4 PM -->
+       <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">4PM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event4" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
+      </div>
+
+      <!-- 5 PM -->
+      <div class="row no-gutters row-custom">
+        <div class="col-2">
+          <p class="hour">5PM</p>
+        </div>
+        <div class="col-8">
+          <textarea class="" name="event" id="event5" cols="30" rows="2">Event</textarea>
+        </div>
+        <div class="col-2 saveBtn">
+          <i class="material-symbols-outlined">
+            save_as
+          </i>
+        </div>
+      </div>
+    
     </div>
-  </div>
+  
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
