@@ -1,8 +1,9 @@
-//use moment js or an alt to post the date on the page and check what the current hour is
+
 var weekday = "";
 var day = 0;
 var month = "";
 var hour = 0;
+//arrays with all month names and weekday names
 var monthName = [
     "January",
     "February",
@@ -29,69 +30,85 @@ var weekdayName = [
 
 var currentDayEl = $('#currentDay');
 
+//set variables to current date and time with dayjs
+weekday = weekdayName[dayjs().day()]; //0 to 6 starts on sat
+day = dayjs().date(); //1 to 31
+month = monthName[dayjs().month()]; //0 to 11 starts on Janaury
+hour = dayjs().hour(); // 0 to 23 starts on 12 AM
 
+//prints out current date
+currentDayEl.text(weekday + ", " + month + " " + day);
+
+//adjust the styling of each time block depending on the time of day
+$('.hour').each(function () {
+    if ($(this).data("time") === hour) {
+        $(this).parent().next().children().removeClass('future').addClass('present');
+
+    } else if ($(this).data("time") < hour) {
+        $(this).parent().next().children().removeClass('present').addClass('past');
+
+    } else if ($(this).data("time") > hour) {
+        $(this).parent().next().children().removeClass('past').addClass('future');
+    }
+});
+
+//same purpose as lines of code above but repeats every second
 setInterval(function () {
-    weekday = weekdayName[dayjs().day()]; //0 to 6 starts on sat
-    day = dayjs().date(); //1 to 31
-    month = monthName[dayjs().month()]; //0 to 11
-    hour = dayjs().hour(); // 0 to 23 
+    weekday = weekdayName[dayjs().day()];
+    day = dayjs().date();
+    month = monthName[dayjs().month()];
+    hour = dayjs().hour();
 
-    //prints out current date
-    currentDayEl.text(weekday+", "+month+" "+day);
+    currentDayEl.text(weekday + ", " + month + " " + day);
 
-    //adjust the styling of each time block depending on the time of day
-    $('.hour').each(function(){
-        if ($( this ).data("time")===hour){
-            $( this ).parent().next().children().removeClass('future').addClass('present');
+    $('.hour').each(function () {
+        if ($(this).data("time") === hour) {
+            $(this).parent().next().children().removeClass('future').addClass('present');
 
-        } else if ($( this ).data("time") < hour) {
-            $( this ).parent().next().children().removeClass('present').addClass('past');
+        } else if ($(this).data("time") < hour) {
+            $(this).parent().next().children().removeClass('present').addClass('past');
 
-        } else if( $( this ).data("time") > hour){
-            $( this ).parent().next().children().removeClass('past').addClass('future');
+        } else if ($(this).data("time") > hour) {
+            $(this).parent().next().children().removeClass('past').addClass('future');
         }
-        return;
     });
-
 
 }, 1000);
 
+//functions clears out all saved events in local storage if within 12 am (checks once an hour)
+setInterval(function () {
+    if (hour === 0) {
+        $(".hour").each(function () {
+            var timeHour = $(this).data("time");
+            localStorage.setItem(timeHour, "");
+            var eventPrevInput = localStorage.getItem(timeHour);
+            $(this).parent().next().children().val(eventPrevInput);
 
-//logic for save button to store in local storage and show the saved in local storage text and keep the text as the message
-$(".saveBtn").click(function() {
-    var eventInputted = $( this ).prev().children().val();
-    var timeOfInput = $( this ).prev().prev().children().data("time");
-    localStorage.setItem(timeOfInput,eventInputted);
-
-    $(".saveMessage").css("display","flex");
-    setTime();
-    
-});
+        });
+    }
+}, 3600000);
 
 setTime();
 
-//function to print out the event saved to the local drive
-function setTime(){
-    $(".hour").each(function (){
-        var timeHour = $( this ).data("time");
-        console.log(timeHour);
+//function to print out the event saved to the local drive onto the approporiate text area
+function setTime() {
+    $(".hour").each(function () {
+        var timeHour = $(this).data("time");
         var eventPrevInput = localStorage.getItem(timeHour);
-        console.log(eventPrevInput);
-        $( this ).parent().next().children().val(eventPrevInput);
-    });  
+        $(this).parent().next().children().val(eventPrevInput);
+    });
 };
 
-//clear out at the end of the day?
-//set interval for one hour
-//if hour is 12 am then set all local memory to empty strings and change values in containers to the new local storage items
-setInterval(function() {
-    if (hour === 0) {
-        $(".hour").each(function (){
-            var timeHour = $( this ).data("time");
-            localStorage.setItem(timeHour, "");
-            var eventPrevInput = localStorage.getItem(timeHour);
-            $( this ).parent().next().children().val(eventPrevInput);
-          
-        }); 
-    }
-},3600000);
+//save button logic when clicked value in text area saved to local drive and display saved message
+$(".saveBtn").click(function () {
+    var eventInputted = $(this).prev().children().val();
+    var timeOfInput = $(this).prev().prev().children().data("time");
+    localStorage.setItem(timeOfInput, eventInputted);
+    $(".saveMessage").css("display", "flex");
+    setTime();
+});
+
+
+
+
+
