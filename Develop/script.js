@@ -49,7 +49,7 @@ setInterval(function () {
             $( this ).parent().next().children().removeClass('present').addClass('past');
 
         } else {
-            $( this ).parent().next().children().removeClass('past').addClass('future');
+            $( this ).parent().prev().children().removeClass('past').addClass('future');
         }
         return;
     });
@@ -58,6 +58,27 @@ setInterval(function () {
 
 
 //logic for save button to store in local storage and show the saved in local storage text and keep the text as the message
+$(".saveBtn").click(function() {
+    var eventInputted = $( this ).prev().children().val();
+    var timeOfInput = $( this ).prev().prev().children().data("time");
+    localStorage.setItem(timeOfInput,eventInputted);
+    setTime();
+    
+});
+
+setTime();
+
+//function to print out the event saved to the local drive
+function setTime(){
+    $(".hour").each(function (){
+        var timeHour = $( this ).data("time");
+        console.log(timeHour);
+        var eventPrevInput = localStorage.getItem(timeHour);
+        console.log(eventPrevInput);
+        $( this ).parent().next().children().val(eventPrevInput);
+    });
+};
+
 
 //when time passes a past event is marked as past
 
