@@ -28,7 +28,6 @@ var weekdayName = [
 ];
 
 var currentDayEl = $('#currentDay');
-var nineAM
 
 
 setInterval(function () {
@@ -48,11 +47,12 @@ setInterval(function () {
         } else if ($( this ).data("time") < hour) {
             $( this ).parent().next().children().removeClass('present').addClass('past');
 
-        } else {
-            $( this ).parent().prev().children().removeClass('past').addClass('future');
+        } else if( $( this ).data("time") > hour){
+            $( this ).parent().next().children().removeClass('past').addClass('future');
         }
         return;
     });
+
 
 }, 1000);
 
@@ -62,6 +62,8 @@ $(".saveBtn").click(function() {
     var eventInputted = $( this ).prev().children().val();
     var timeOfInput = $( this ).prev().prev().children().data("time");
     localStorage.setItem(timeOfInput,eventInputted);
+
+    $(".saveMessage").css("display","flex");
     setTime();
     
 });
@@ -76,10 +78,20 @@ function setTime(){
         var eventPrevInput = localStorage.getItem(timeHour);
         console.log(eventPrevInput);
         $( this ).parent().next().children().val(eventPrevInput);
-    });
+    });  
 };
 
-
-//when time passes a past event is marked as past
-
 //clear out at the end of the day?
+//set interval for one hour
+//if hour is 12 am then set all local memory to empty strings and change values in containers to the new local storage items
+setInterval(function() {
+    if (hour === 0) {
+        $(".hour").each(function (){
+            var timeHour = $( this ).data("time");
+            localStorage.setItem(timeHour, "");
+            var eventPrevInput = localStorage.getItem(timeHour);
+            $( this ).parent().next().children().val(eventPrevInput);
+          
+        }); 
+    }
+},3600000);
