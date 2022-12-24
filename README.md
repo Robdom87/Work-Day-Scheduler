@@ -1,4 +1,4 @@
-# Work Day Scheduler Starter Code
+# Work Day Scheduler
 
 ##Description
 The Work Day Scheduler is a simple app to organize a person's schedule. It is divided into two sections: header, and the time sections.
